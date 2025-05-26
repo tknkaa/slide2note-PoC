@@ -2,12 +2,25 @@ from google import genai
 from google.genai import types
 from pdf2image import convert_from_path
 from dotenv import dotenv_values
+from PIL import Image
 
+path = "examples.pdf"
+pages = convert_from_path(path, dpi=300)
 
-path = "example.pdf"
-page = convert_from_path(path, dpi=300)[0]
-image = page.rotate(270, expand=True)
-image.save("example.jpg")
+max_width = 0
+total_height = 0
+for img in pages:
+    max_width = max(max_width, img.width)
+    total_height += img.height
+
+dst = Image.new("RGB", (max_width, total_height))
+current_height = 0
+for img in pages:
+    img = img.rotate(270, expand=True)
+    dst.paste(img, (0, current_height))
+    current_height += img.height
+
+dst.save("example.jpg")
 with open('example.jpg', 'rb') as f:
     image_bytes = f.read()
 # image_bytes = image.tobytes()
@@ -24,5 +37,5 @@ response = client.models.generate_content(
     ],
 )
 
-with open("example.txt", "x") as f:
+with open("example.md", "w") as f:
     f.write(response.text)
