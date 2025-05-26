@@ -1,7 +1,7 @@
 import easyocr
 
-reader = easyocr.Reader(["en", "ja"])
+reader = easyocr.Reader(["en", "ja"], gpu=False)
 
-result = reader.readtext("page_1.jpg")
+result = reader.readtext("hoge.jpg", detail=0)
 
 print(result)
