@@ -8,6 +8,7 @@ dependencies = [
     "black>=25.1.0",
     "easyocr>=1.7.2",
     "google>=3.0.0",
+    "google-genai>=1.16.1",
     "kaggle>=1.7.4.5",
     "numpy>=2.2.6",
     "opencv-python>=4.11.0.86",
@@ -15,5 +16,6 @@ dependencies = [
     "pillow>=11.2.1",
     "pyocr>=0.8.5",
     "pypdf>=5.5.0",
+    "python-dotenv>=1.1.0",
     "torch>=2.7.0",
 ]
