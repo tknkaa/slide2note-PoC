@@ -1,9 +1,13 @@
 from pdf2image import convert_from_path
 import easyocr
 import cv2
+import subprocess
+
+subprocess.run(["apt-get", "update"])
+subprocess.run(["apt-get", "install", "-y", "poppler-utils"])
 
 reader = easyocr.Reader(["en", "ja"])
-path = "hoge.pdf"
+path = "/kaggle/input/test-pdf/hoge.pdf"
 pages = convert_from_path(path, dpi=300)
 text = ""
 
