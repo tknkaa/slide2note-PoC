@@ -7,16 +7,19 @@ from PIL import Image
 path = "examples.pdf"
 pages = convert_from_path(path, dpi=300)
 
+rotated_pages = []
+for page in pages:
+    rotated_pages.append(page.rotate(270, expand=True))
+
 max_width = 0
 total_height = 0
-for img in pages:
+for img in rotated_pages:
     max_width = max(max_width, img.width)
     total_height += img.height
 
 dst = Image.new("RGB", (max_width, total_height))
 current_height = 0
-for img in pages:
-    img = img.rotate(270, expand=True)
+for img in rotated_pages:
     dst.paste(img, (0, current_height))
     current_height += img.height
 
