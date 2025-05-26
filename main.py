@@ -14,11 +14,10 @@ text = ""
 for i, page in enumerate(pages):
     page = page.rotate(270, expand=True)
     page.save(f"page_{i + 1}.jpg")
-    # page.save("hoge.jpg")
     image = cv2.imread(f"page_{i + 1}.jpg")
-    # image = cv2.imread("hoge.jpg")
     result = reader.readtext(image, detail=0)
     print(f"DEBUG OCR result: {result}")
     text += "\n".join(result) + "\n"
 
-print(text)
+with open("example.txt", "w") as f:
+    f.write(text)
