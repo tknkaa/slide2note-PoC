@@ -27,10 +27,9 @@ export default function Home() {
 
 	return (
 		<div>
-			<form>
-				<label>File</label>
+			<form action={handleUpload}>
 				<input type="file" accept=".pdf" onChange={handleFileChange} />
-				<button onClick={handleUpload} type="button">
+				<button type="submit">
 					Upload
 				</button>
 			</form>
