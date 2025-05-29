@@ -22,7 +22,7 @@ export default function Home() {
 			body: formData,
 		});
 		const json = await res.json();
-		setMessage(json.filename);
+		setMessage(json.response);
 	};
 
 	return (
