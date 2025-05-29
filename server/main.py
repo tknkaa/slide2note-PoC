@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from llm import get_gemini_response
+import os
 
 app = FastAPI()
 
@@ -28,4 +29,5 @@ async def create_slide(file: UploadFile):
     with open("example.pdf", "wb") as f:
             f.write(content)
     response = get_gemini_response("example.pdf")
+    os.remove("example.pdf")
     return {"filename": file.filename, "response": response}
