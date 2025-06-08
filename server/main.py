@@ -27,7 +27,7 @@ def read_root():
 async def create_slide(file: UploadFile):
     content = await file.read()
     with open("example.pdf", "wb") as f:
-            f.write(content)
+        f.write(content)
     response = get_gemini_response("example.pdf")
     os.remove("example.pdf")
     return {"filename": file.filename, "response": response}
