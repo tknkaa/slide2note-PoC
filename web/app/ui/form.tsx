@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { type GeminiResponse, getGeminiResponse } from "./actions";
+import { type GeminiResponse, getGeminiResponse } from "../actions";
 
 export default function Form() {
 	const initialState: GeminiResponse = { filename: "", response: "" };
