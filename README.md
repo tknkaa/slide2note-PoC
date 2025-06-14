@@ -1,16 +1,11 @@
 # slide2note
-## server
+## setup
 ```sh
-cd server
-uv venv
-uv sync
-fastapi dev main.py
+just dev
 ```
 
-## web
+## development
 ```sh
-cd web
-bun install
-bun dev
+just dev
 ```
 open http://localhost:3000 in your browser
