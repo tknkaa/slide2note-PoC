@@ -1,6 +1,8 @@
 "use server";
 
 import { auth } from "@/app/lib/auth";
+// import { cookies } from "next/headers";
+import { parseSetCookieHeader } from "better-auth/cookies";
 import { redirect } from "next/navigation";
 
 export type GeminiResponse = {
@@ -36,6 +38,15 @@ export async function signIn(formData: FormData) {
 		asResponse: true,
 	});
 	console.log(response);
+
+	// const cookieStore = await cookies();
+	const setCookieHeader = response.headers.get("set-cookie");
+	console.log(setCookieHeader);
+	if (setCookieHeader) {
+		const parsedCookies = parseSetCookieHeader(setCookieHeader);
+		console.log(parsedCookies);
+		// cookieStore.set
+	}
 	redirect("/slides");
 }
 
