@@ -2,7 +2,7 @@
 	"scripts": {
 		"setup:web": "cd web && bun install",
 		"setup:server": "cd server && uv sync",
-		"setup": "bun setup:web && bun setup:server",
+		"setup": "bun install && bun setup:web && bun setup:server",
 		"dev:web": "cd web && bun dev",
 		"dev:server": "cd server && uv run fastapi dev main.py",
 		"dev": "concurrently \"bun dev:web\" \"bun dev:server\""
