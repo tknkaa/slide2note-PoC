@@ -1,5 +1,10 @@
 "use server";
 
+import { auth } from "@/app/lib/auth";
+// import { cookies } from "next/headers";
+import { parseSetCookieHeader } from "better-auth/cookies";
+import { redirect } from "next/navigation";
+
 export type GeminiResponse = {
 	filename: string;
 	response: string;
@@ -20,4 +25,42 @@ export async function getGeminiResponse(
 	});
 	const json: GeminiResponse = await res.json();
 	return json;
+}
+
+export async function signIn(formData: FormData) {
+	const email = formData.get("email") as string;
+	const password = formData.get("password") as string;
+	const response = await auth.api.signInEmail({
+		body: {
+			email,
+			password,
+		},
+		asResponse: true,
+	});
+	console.log(response);
+
+	// const cookieStore = await cookies();
+	const setCookieHeader = response.headers.get("set-cookie");
+	console.log(setCookieHeader);
+	if (setCookieHeader) {
+		const parsedCookies = parseSetCookieHeader(setCookieHeader);
+		console.log(parsedCookies);
+		// cookieStore.set
+	}
+	redirect("/slides");
+}
+
+export async function signUp(formData: FormData) {
+	const email = formData.get("email") as string;
+	const password = formData.get("password") as string;
+	const name = formData.get("name") as string;
+	const response = await auth.api.signUpEmail({
+		body: {
+			name,
+			email,
+			password,
+		},
+	});
+	console.log(response);
+	redirect("/sign-in");
 }
