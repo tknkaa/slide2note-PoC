@@ -1,11 +1,11 @@
 # slide2note
 ## setup
 ```sh
-just dev
+bun setup
 ```
 
 ## development
 ```sh
-just dev
+bun dev
 ```
 open http://localhost:3000 in your browser
