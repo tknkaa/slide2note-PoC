@@ -1,9 +1,9 @@
 "use client";
 
 import { useActionState } from "react";
-import { type GeminiResponse, getGeminiResponse } from "../actions";
+import { type GeminiResponse, getGeminiResponse } from "@/app/actions";
 
-export default function Form() {
+export default function SlideForm() {
 	const initialState: GeminiResponse = { filename: "", response: "" };
 	const [response, action, isPending] = useActionState(
 		getGeminiResponse,

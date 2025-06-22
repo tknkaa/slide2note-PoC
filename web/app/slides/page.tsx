@@ -1,5 +1,5 @@
-import Form from "../ui/form";
+import SlideForm from "@/components/SlideForm";
 
 export default function Page() {
-	return <Form />;
+	return <SlideForm />;
 }

@@ -1,9 +1,9 @@
 "use server";
 
-import { auth } from "@/app/lib/auth";
 // import { cookies } from "next/headers";
 import { parseSetCookieHeader } from "better-auth/cookies";
 import { redirect } from "next/navigation";
+import { auth } from "@/app/lib/auth";
 
 export type GeminiResponse = {
 	filename: string;
