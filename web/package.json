@@ -10,7 +10,7 @@
 		"format": "bunx @biomejs/biome check --write ."
 	},
 	"dependencies": {
-		"better-auth": "^1.2.9",
+		"better-auth": "^1.2.10",
 		"better-sqlite3": "^11.10.0",
 		"next": "15.3.2",
 		"react": "^19.0.0",
