@@ -8,7 +8,7 @@
 		"dev": "concurrently \"bun dev:web\" \"bun dev:server\""
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.0.4",
+		"@biomejs/biome": "^2.0.5",
 		"concurrently": "^9.2.0",
 		"lefthook": "^1.11.14"
 	}
